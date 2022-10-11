@@ -58,4 +58,8 @@ export class BookshelfService {
       this.bookListChanged.emit(this.myBooks.slice());
     }
   }
+
+  getBook(idx: number) {
+    return this.myBooks.slice()[idx];
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../../shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 
@@ -11,7 +12,11 @@ export class BookListComponent implements OnInit {
   @Output() currentBookSelected = new EventEmitter<Book>();
   myBooks: Book[] = [];
 
-  constructor(private bookshelfService: BookshelfService) {}
+  constructor(
+    private bookshelfService: BookshelfService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.myBooks = this.bookshelfService.getBooks();
@@ -23,5 +28,9 @@ export class BookListComponent implements OnInit {
 
   onRemoveBook(idx: number) {
     this.bookshelfService.removeBook(idx);
+  }
+
+  onNewBook() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 }

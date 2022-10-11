@@ -9,6 +9,7 @@ import { Book } from './book.model';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book;
+  @Input() idx: number;
 
   constructor(private bookshelfService: BookshelfService) {}
 
