@@ -16,6 +16,6 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {}
 
   onBookSelected() {
-    this.bookshelfService.bookSelected.emit(this.book);
+    this.bookshelfService.bookSelected.next(this.book);
   }
 }
