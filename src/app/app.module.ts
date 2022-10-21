@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BookshelfComponent } from './bookshelf/bookshelf.component';
@@ -15,6 +16,8 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-home.component';
 import { BookEditorComponent } from './bookshelf/book-editor/book-editor.component';
 import { NotificationComponent } from './shared/notification/notification.component';
+import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
+import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +34,10 @@ import { NotificationComponent } from './shared/notification/notification.compon
     BookshelfHomeComponent,
     BookEditorComponent,
     NotificationComponent,
+    BookFormTdComponent,
+    BookFormReactiveComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
