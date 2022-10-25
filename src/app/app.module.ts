@@ -16,8 +16,8 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-home.component';
 import { BookEditorComponent } from './bookshelf/book-editor/book-editor.component';
 import { NotificationComponent } from './shared/notification/notification.component';
-import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
-import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
+
+import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,7 @@ import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-f
     BookshelfHomeComponent,
     BookEditorComponent,
     NotificationComponent,
-    BookFormTdComponent,
-    BookFormReactiveComponent,
+    SortBooksPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

@@ -23,19 +23,19 @@ export class BookshelfService {
     ),
     new Book(
       'Some Book',
-      'Tom',
+      'Anna',
       'Non-fiction',
       'https://source.unsplash.com/50x50/?book'
     ),
     new Book(
-      'Some Book',
-      'Tom',
+      'Fome Book',
+      'Harry',
       'Non-fiction',
       'https://source.unsplash.com/50x50/?book'
     ),
     new Book(
-      'Some Book',
-      'Tom',
+      'Vome Book',
+      'Molly',
       'Non-fiction',
       'https://source.unsplash.com/50x50/?book'
     ),
@@ -49,6 +49,11 @@ export class BookshelfService {
   // Create
   saveBook(book: Book) {
     this.myBooks.push(book);
+    this.bookListChanged.next(this.myBooks.slice());
+  }
+
+  updateBook(idx: number, updatedBook: Book) {
+    this.myBooks[idx] = updatedBook;
     this.bookListChanged.next(this.myBooks.slice());
   }
 

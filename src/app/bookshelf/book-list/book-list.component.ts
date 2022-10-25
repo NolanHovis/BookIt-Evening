@@ -11,6 +11,8 @@ import { BookshelfService } from '../bookshelf.service';
 export class BookListComponent implements OnInit {
   @Output() currentBookSelected = new EventEmitter<Book>();
   myBooks: Book[] = [];
+  sortField = 'author';
+  sortSwitcher = true;
 
   constructor(
     private bookshelfService: BookshelfService,
@@ -32,5 +34,15 @@ export class BookListComponent implements OnInit {
 
   onNewBook() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onSort() {
+    this.sortSwitcher = !this.sortSwitcher;
+
+    if (this.sortSwitcher) {
+      this.sortField = 'author';
+    } else {
+      this.sortField = 'title';
+    }
   }
 }
