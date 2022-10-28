@@ -8,38 +8,7 @@ import { Book } from '../shared/book/book.model';
 export class BookshelfService {
   bookSelected = new Subject<Book>();
   bookListChanged = new Subject<Book[]>();
-  private myBooks: Book[] = [
-    new Book(
-      'Book of Testing',
-      'Nolan',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'Another Book',
-      'Jacob',
-      'Fiction',
-      'https://source.unsplash.com/50x50/?fiction,book'
-    ),
-    new Book(
-      'Some Book',
-      'Anna',
-      'Non-fiction',
-      'https://source.unsplash.com/50x50/?book'
-    ),
-    new Book(
-      'Fome Book',
-      'Harry',
-      'Non-fiction',
-      'https://source.unsplash.com/50x50/?book'
-    ),
-    new Book(
-      'Vome Book',
-      'Molly',
-      'Non-fiction',
-      'https://source.unsplash.com/50x50/?book'
-    ),
-  ];
+  private myBooks: Book[] = [];
 
   // Read
   getBooks() {
@@ -67,5 +36,13 @@ export class BookshelfService {
 
   getBook(idx: number) {
     return this.myBooks.slice()[idx];
+  }
+
+  setBooks(books: Book[]) {
+    console.log('Books: ', books);
+
+    this.myBooks = books || [];
+
+    this.bookListChanged.next(this.myBooks.slice());
   }
 }

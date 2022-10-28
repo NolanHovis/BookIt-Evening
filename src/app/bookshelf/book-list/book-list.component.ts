@@ -1,5 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Book } from '../../shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 
@@ -8,11 +15,12 @@ import { BookshelfService } from '../bookshelf.service';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   @Output() currentBookSelected = new EventEmitter<Book>();
   myBooks: Book[] = [];
   sortField = 'author';
   sortSwitcher = true;
+  private bookListSub: Subscription;
 
   constructor(
     private bookshelfService: BookshelfService,
@@ -23,9 +31,11 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.myBooks = this.bookshelfService.getBooks();
 
-    this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
-      this.myBooks = books;
-    });
+    this.bookListSub = this.bookshelfService.bookListChanged.subscribe(
+      (books: Book[]) => {
+        this.myBooks = books;
+      }
+    );
   }
 
   onRemoveBook(idx: number) {
@@ -44,5 +54,9 @@ export class BookListComponent implements OnInit {
     } else {
       this.sortField = 'title';
     }
+  }
+
+  ngOnDestroy(): void {
+    this.bookListSub.unsubscribe();
   }
 }

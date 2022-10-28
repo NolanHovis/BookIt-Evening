@@ -41,8 +41,18 @@
           Setttings
         </a>
         <div class="dropdown-menu" [class.show]="show">
-          <a class="dropdown-item">Save Data</a>
-          <a class="dropdown-item">Fetch Data</a>
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="onFetchData()"
+            >Fetch Data</a
+          >
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="onSaveData()"
+            >Save Data</a
+          >
         </div>
       </li>
     </ul>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookDetailsComponent } from './bookshelf/book-details/book-details.component';
 import { BookEditorComponent } from './bookshelf/book-editor/book-editor.component';
 import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-home.component';
+import { BookshelfResolverService } from './bookshelf/bookshelf-resolver.service';
 import { BookshelfComponent } from './bookshelf/bookshelf.component';
 import { LibraryComponent } from './library/library.component';
 
@@ -14,8 +15,16 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: BookshelfHomeComponent },
       { path: 'new', component: BookEditorComponent },
-      { path: ':id', component: BookDetailsComponent },
-      { path: ':id/edit', component: BookEditorComponent },
+      {
+        path: ':id',
+        component: BookDetailsComponent,
+        resolve: [BookshelfResolverService],
+      },
+      {
+        path: ':id/edit',
+        component: BookEditorComponent,
+        resolve: [BookshelfResolverService],
+      },
     ],
   },
   { path: 'library', component: LibraryComponent },

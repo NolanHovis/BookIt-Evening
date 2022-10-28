@@ -1,5 +1,5 @@
-<div class="row mb-3">
-  <div class="col-md-12" *ngFor="let bookEl of allBooks">
+<div class="row mb-3" *ngIf="bookResults.length > 0">
+  <div class="col-md-6" *ngFor="let bookEl of bookResults">
     <app-book [book]="bookEl"></app-book>
     <button
       class="float-right"
@@ -9,4 +9,8 @@
       &plus;
     </button>
   </div>
+</div>
+
+<div class="mb-3 row" *ngIf="bookResults.length < 1">
+  <p>No Books Available!</p>
 </div>

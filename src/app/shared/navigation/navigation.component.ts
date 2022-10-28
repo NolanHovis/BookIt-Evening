@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { HttpService } from '../http/http.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +10,15 @@ export class NavigationComponent implements OnInit {
   collapsed = true;
   show = false;
 
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {}
+
+  onSaveData() {
+    this.httpService.saveDataToFirebase();
+  }
+
+  onFetchData() {
+    this.httpService.fetchDataFromFirebase().subscribe();
+  }
 }
