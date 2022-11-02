@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" email formControlName="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" formControlName="password">
+            </div>
+
+            <p class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+            <button type="submit" class="btn btn-primary mr-3" [disabled]="loginForm.invalid">{{ isLoginMode ? "Sign In"
+                : "Sign Up"}}</button>
+            <button type="button" class="btn btn-secondary" (click)="onSwitchAuthMode()">Switch to {{ isLoginMode ?
+                "Sign Up" : "Sign In"}}</button>
+        </form>
+    </div>
+</div>
