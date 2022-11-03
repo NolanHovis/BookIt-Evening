@@ -6,11 +6,14 @@ import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-hom
 import { BookshelfResolverService } from './bookshelf/bookshelf-resolver.service';
 import { BookshelfComponent } from './bookshelf/bookshelf.component';
 import { LibraryComponent } from './library/library.component';
+import { AuthGuard } from './shared/auth/auth-guard.service';
+import { AuthComponent } from './shared/auth/auth.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/bookshelf', pathMatch: 'full' },
   {
     path: 'bookshelf',
+    canActivate: [AuthGuard],
     component: BookshelfComponent,
     children: [
       { path: '', component: BookshelfHomeComponent },
@@ -27,11 +30,12 @@ const appRoutes: Routes = [
       },
     ],
   },
-  { path: 'library', component: LibraryComponent },
+  { path: 'library', component: LibraryComponent, canActivate: [AuthGuard] },
+  { path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

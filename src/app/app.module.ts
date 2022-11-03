@@ -19,6 +19,7 @@ import { BookEditorComponent } from './bookshelf/book-editor/book-editor.compone
 import { NotificationComponent } from './shared/notification/notification.component';
 
 import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
+import { AuthComponent } from './shared/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
     BookEditorComponent,
     NotificationComponent,
     SortBooksPipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -47,4 +49,4 @@ import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
