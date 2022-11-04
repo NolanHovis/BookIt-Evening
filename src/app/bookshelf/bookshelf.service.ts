@@ -18,6 +18,7 @@ export class BookshelfService {
   // Create
   saveBook(book: Book) {
     this.myBooks.push(book);
+    this.bookSelected.next(book);
     this.bookListChanged.next(this.myBooks.slice());
   }
 
